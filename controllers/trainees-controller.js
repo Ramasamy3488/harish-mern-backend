@@ -17,8 +17,16 @@ async function readATrainee(req, res) {
     const { name = "", email = "" } = req.body ?? {};
     const query = {};
 
-    if (name) query.name = name;
-    if (email) query.email = email;
+    // if (name) query.name = name;
+    // if (email) query.email = email;
+
+     if (name) {
+      query.name = { $regex: name, $options: "i" };  // case-insensitive
+    }
+
+    if (email) {
+      query.email = { $regex: email, $options: "i" }; // case-insensitive
+    }
 
     const trainees = await TraineesModel.find(query);
 
@@ -125,3 +133,4 @@ query.name = { $regex: `${name}$`, $options: "i" };  -- end with
 
 
 */
+
