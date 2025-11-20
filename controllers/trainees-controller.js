@@ -95,3 +95,33 @@ module.exports = {
   deleteATrainee
 };
 
+
+
+
+
+//////////////////
+
+/*
+
+| Pattern                           | Case-insensitive? | Contains?      |
+| --------------------------------- | ----------------- | -------------- |
+| `{ $regex: name }`                | ❌ No              | ✔ Yes          |
+| `{ $regex: name, $options: "i" }` | ✔ Yes             | ✔ Yes          |
+| `^{name}$`                        | ❌ Only exact      | ❌ Not contains |
+| `^name`                           | ❌ No              | ✔ Starts with  |
+| `name$`                           | ❌ No              | ✔ Ends with    |
+
+if (name) {
+  query.name = { $regex: name, $options: "i" };
+}  
+
+
+query.name = { $regex: `^${name}$`, $options: "i" }; -- exact match but case-insensitive
+
+query.name = { $regex: `^${name}`, $options: "i" };  -- start with
+
+query.name = { $regex: `${name}$`, $options: "i" };  -- end with
+
+
+
+*/
