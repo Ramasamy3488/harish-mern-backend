@@ -14,7 +14,7 @@ async function readAllTrainees(req, res) {
 
 async function readATrainee(req, res) {
   try {
-    const { name = "", email = "" } = req.body || {};
+    const { name = "", email = "" } = req.body ?? {};
     const query = {};
 
     if (name) query.name = name;
@@ -94,3 +94,4 @@ module.exports = {
   updateATrainee,
   deleteATrainee
 };
+
