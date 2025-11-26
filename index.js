@@ -18,9 +18,12 @@ conn.connectToMongoDB();
 // }));
 
 app.use(cors({
-  origin: '*',   
-  credentials: true 
+  origin: ["http://localhost:3000", "https://ramasamy3488.github.io"], // allow both dev and prod
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true // only if using cookies or auth headers
 }));
+
 
 
 
@@ -112,4 +115,5 @@ app.listen(process.env.PORT, () => {
 // // Start server
 // const PORT = 3000;
 // app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
 
